@@ -44,11 +44,11 @@ function getComputerChoice() {
 
 //playerSelection must be able to input case insensitive
 function playerSelection() {
-    let input = prompt("Enter rock, paper or scissors");
+    let input = prompt("Enter rock, paper or scissor");
     let ans;
     const pattern= /paper/i  ;
     const pattern2 = /rock/i;
-    const pattern3 = /scissors/i;
+    const pattern3 = /scissor/i;
     
     
      if (pattern.test(input) == true){
@@ -56,9 +56,9 @@ function playerSelection() {
      } else if (pattern2.test(input) == true) {
         ans = "Rock";
      } else if (pattern3.test(input) == true){
-        ans = "Scissors";
+        ans = "Scissor";
      } else {
-        ans = "Please use only rock, paper or scissors";
+        ans = "Please use only rock, paper or scissor";
      }
         return ans;
     }
@@ -79,26 +79,37 @@ let comp = getComputerChoice();
 
 function rps(com,func) {
     let result;
+    let final = "Not quite";
 
     if (com == func) {
          result = "draw"; }
-    else if (com == "Scissors" && func == "Paper"){
+    else if (com == "Scissor" && func == "Paper"){
         result = "Player Wins";
-    } else if (com == "Paper" && func == "Scissors"){
+    } else if (com == "Paper" && func == "Scissor"){
         result = "Computer Wins";
     } else if (com == "Paper" && func == "Rock"){
         result = "Computer Wins";
     } else if (com == "Rock" && func == "Paper"){
         result = "Player Wins";
-    } else if (com == "Rock" && func == "Scissors"){
+    } else if (com == "Rock" && func == "Scissor"){
         result = "Computer Wins";
-    } else if (com == "Scissors" && func == "Rock"){
+    } else if (com == "Scissor" && func == "Rock"){
         result = "Player Wins";
     }else {
-        result = "Please use only rock, paper or scissors";
+        result = "Please use only rock, paper or scissor";
     }
 
-    return result;
+    if (result == "Player Wins") {
+        final = `You Win! ${comp} beats ${playerSelection()}`
+    } else if (result == "Computer Wins") {
+        final = `You Lose! ${comp} beats ${playerSelection()}`
+    } else if (result == "draw") {
+        `It's a draw!`;
+    }
+
+
+    return final;
 }
 
 
+/// `You ${winOrLose}! ${comp} beats ${playerSelection()}`
