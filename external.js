@@ -35,3 +35,69 @@ function getComputerChoice() {
     }
     return result;
 }
+
+
+//SECOND PART
+
+// create a function that takes 2 parameters, computerSelection
+// , playerSelection
+
+//playerSelection must be able to input case insensitive
+function playerSelection() {
+    let input = prompt("Enter rock, paper or scissors");
+    let ans;
+    const pattern= /paper/i  ;
+    const pattern2 = /rock/i;
+    const pattern3 = /scissors/i;
+    
+    
+     if (pattern.test(input) == true){
+        ans = "Paper";
+     } else if (pattern2.test(input) == true) {
+        ans = "Rock";
+     } else if (pattern3.test(input) == true){
+        ans = "Scissors";
+     } else {
+        ans = "Please use only rock, paper or scissors";
+     }
+        return ans;
+    }
+    
+//conditions
+// scissors beats paper, paper beats rock, rock beats scissors
+//returns a string that declares winner
+
+//ideas : 
+// use numbers to decide who will win ; 0>1== true, return player
+// need to convert playerChoice to numbers to use it
+
+// what if we create an array of inputs and call it from there?
+
+let comp = getComputerChoice();
+let player = playerSelection();
+
+
+function rps(comp,player) {
+    let result;
+
+    if (comp == player) {
+        let result = "draw"; }
+    else if (comp == "Scissors" && player == "Paper"){
+        result = "Player Wins";
+    } else if (comp == "Paper" && player == "Scissors"){
+        result = "Computer Wins";
+    } else if (comp == "Paper" && player == "Rock"){
+        result = "Computer Wins";
+    } else if (comp == "Rock" && player == "Paper"){
+        result = "Player Wins";
+    } else if (comp == "Rock" && player == "Scissors"){
+        result = "Computer Wins";
+    } else if (comp == "Scissors" && player == "Rock"){
+        result = "Player Wins";
+    }else {
+        console.log("error");
+    }
+    return result;
+}
+
+
