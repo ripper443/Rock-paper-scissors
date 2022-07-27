@@ -28,7 +28,7 @@ function getComputerChoice() {
              result = "Paper"
             break;
         case 2 : 
-             result = "Scissor";
+             result = "Scissors";
             break;
         default :
         console.log("ERROR");
@@ -74,29 +74,30 @@ function playerSelection() {
 // what if we create an array of inputs and call it from there?
 
 let comp = getComputerChoice();
-let player = playerSelection();
 
 
-function rps(comp,player) {
+
+function rps(com,func) {
     let result;
 
-    if (comp == player) {
-        let result = "draw"; }
-    else if (comp == "Scissors" && player == "Paper"){
+    if (com == func) {
+         result = "draw"; }
+    else if (com == "Scissors" && func == "Paper"){
         result = "Player Wins";
-    } else if (comp == "Paper" && player == "Scissors"){
+    } else if (com == "Paper" && func == "Scissors"){
         result = "Computer Wins";
-    } else if (comp == "Paper" && player == "Rock"){
+    } else if (com == "Paper" && func == "Rock"){
         result = "Computer Wins";
-    } else if (comp == "Rock" && player == "Paper"){
+    } else if (com == "Rock" && func == "Paper"){
         result = "Player Wins";
-    } else if (comp == "Rock" && player == "Scissors"){
+    } else if (com == "Rock" && func == "Scissors"){
         result = "Computer Wins";
-    } else if (comp == "Scissors" && player == "Rock"){
+    } else if (com == "Scissors" && func == "Rock"){
         result = "Player Wins";
     }else {
-        console.log("error");
+        result = "Please use only rock, paper or scissors";
     }
+
     return result;
 }
 
