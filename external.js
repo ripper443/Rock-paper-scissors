@@ -4,17 +4,17 @@
 
 //function declaration
 
-//RANDOMLY return rock,paper or scissors
+//RANDOMLY return rock,paper or scissor
     
 //Math.floor(Math.random() * 3) ;  // returns 0 , 1, 2
 
 //if result is 0, return rock
 //if result is 1,  return paper
-//if result is 2, return scissors
+//if result is 2, return scissor
 
 //use console
 
-
+let input = prompt("Enter rock, paper or scissor");
 
 
 function getComputerChoice() {
@@ -28,7 +28,7 @@ function getComputerChoice() {
              result = "Paper"
             break;
         case 2 : 
-             result = "Scissors";
+             result = "Scissor";
             break;
         default :
         console.log("ERROR");
@@ -42,9 +42,11 @@ function getComputerChoice() {
 // create a function that takes 2 parameters, computerSelection
 // , playerSelection
 
+let comp = getComputerChoice();
+
+
 //playerSelection must be able to input case insensitive
 function playerSelection() {
-    let input = prompt("Enter rock, paper or scissor");
     let ans;
     const pattern= /paper/i  ;
     const pattern2 = /rock/i;
@@ -64,7 +66,7 @@ function playerSelection() {
     }
     
 //conditions
-// scissors beats paper, paper beats rock, rock beats scissors
+// scissors beats paper, paper beats rock, rock beats scissor
 //returns a string that declares winner
 
 //ideas : 
@@ -73,43 +75,51 @@ function playerSelection() {
 
 // what if we create an array of inputs and call it from there?
 
-let comp = getComputerChoice();
 
 
 
 function rps(com,func) {
-    let result;
+    let winner;
     let final = "Not quite";
 
+
     if (com == func) {
-         result = "draw"; }
+        winner = "Draw"; }
     else if (com == "Scissor" && func == "Paper"){
-        result = "Player Wins";
+        winner = "Computer Wins";
     } else if (com == "Paper" && func == "Scissor"){
-        result = "Computer Wins";
+        winner = "Computer Wins";
     } else if (com == "Paper" && func == "Rock"){
-        result = "Computer Wins";
+        winner = "Player Wins";
     } else if (com == "Rock" && func == "Paper"){
-        result = "Player Wins";
+        winner= "Computer Wins";
     } else if (com == "Rock" && func == "Scissor"){
-        result = "Computer Wins";
+        winner = "Computer Wins";
     } else if (com == "Scissor" && func == "Rock"){
-        result = "Player Wins";
+        winner= "Player Wins";
     }else {
-        result = "Please use only rock, paper or scissor";
+        winner = "Not quite";
+       
+    }
+    
+    if (winner == "Player Wins") {
+        final = `You Win! ${func} beats ${com}`
+    } else if (winner == "Computer Wins"){
+        final  = `You Lose! ${com} beats ${func}`
+    } else if (winner == "Draw"){
+        final = `It's a draw!`
     }
 
-    if (result == "Player Wins") {
-        final = `You Win! ${comp} beats ${playerSelection()}`
-    } else if (result == "Computer Wins") {
-        final = `You Lose! ${comp} beats ${playerSelection()}`
-    } else if (result == "draw") {
-        `It's a draw!`;
-    }
-
+    console.log("winner : " + winner);
+    console.log(com);
+    console.log(func);
 
     return final;
 }
 
 
 /// `You ${winOrLose}! ${comp} beats ${playerSelection()}`
+
+/// if winner=player = 
+/// if winner = comp=
+
