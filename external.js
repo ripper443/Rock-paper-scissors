@@ -112,8 +112,8 @@ function playRound(com,func) {
 
     
 
-    console.log("Computer:" + com + " Player:" + func);
-    console.log("Winner: " + winner);
+    //console.log("Computer:" + com + " Player:" + func);
+    //console.log("Winner: " + winner);
 
     return final;
 }
@@ -122,3 +122,61 @@ function playRound(com,func) {
 
 /// if winner=player = 
 /// if winner = comp=
+
+//GAME FUNCTION
+/** keep count of rounds */
+/* inital value is 5, decrement until 1*/
+
+const Win = /win/i;
+const Lose = /lose/i;
+       
+function truth(){
+let both = playRound(getComputerChoice(),playerSelection());
+console.log(both);
+
+let ans = "";
+if (Win.test(both) == true){
+    ans = "Win";
+} else if (Lose.test(both) == true) {
+    ans = "Lose";
+}else {
+    ans = "Draw";
+}
+   return ans;
+}
+
+
+function game(){
+    let count = +"";
+    let temp = "";
+
+    let player = 0;
+    let computer = 0;
+
+    let end;
+
+    for (let i = 1; i < 6; i++){
+   temp = playRound(getComputerChoice(),playerSelection())
+   if (Win.test(temp) == true){
+    player+=1;
+   } else if (Lose.test(temp) == true){
+    computer+=1;
+   }
+
+
+    console.log(temp);
+    console.log(player);
+    console.log(computer);
+}
+    if (player > computer) {
+        end = `Player Wins! ${player} vs ${computer}`
+    }else if ( computer > player){
+        end = `Computer Wins! ${computer} vs ${player}`
+    }
+return end;
+}
+
+
+
+/*when it reaches 5 rounds, declare winner*/
+/*calls playRound function*/
