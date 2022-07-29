@@ -78,7 +78,7 @@ function playerSelection() {
 
 
 
-function rps(com,func) {
+function playRound(com,func) {
     let winner;
     let final = "Not quite";
 
