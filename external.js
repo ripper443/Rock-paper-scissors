@@ -86,33 +86,34 @@ function rps(com,func) {
     if (com == func) {
         winner = "Draw"; }
     else if (com == "Scissor" && func == "Paper"){
-        winner = "Computer Wins";
+        winner = "Computer";
     } else if (com == "Paper" && func == "Scissor"){
-        winner = "Player Wins";
+        winner = "Player";
     } else if (com == "Paper" && func == "Rock"){
-        winner = "Computer Wins";
+        winner = "Computer";
     } else if (com == "Rock" && func == "Paper"){
-        winner= "Player Wins";
+        winner= "Player";
     } else if (com == "Rock" && func == "Scissor"){
-        winner = "Computer Wins";
+        winner = "Computer";
     } else if (com == "Scissor" && func == "Rock"){
-        winner= "Player Wins";
+        winner= "Player";
     }else {
         winner = "Not quite";
        
     }
     
-    if (winner == "Player Wins") {
+    if (winner == "Player") {
         final = `You Win! ${func} beats ${com}`
-    } else if (winner == "Computer Wins"){
+    } else if (winner == "Computer"){
         final  = `You Lose! ${com} beats ${func}`
     } else if (winner == "Draw"){
         final = `It's a draw!`
     }
 
-    console.log("winner : " + winner);
-    console.log(com);
-    console.log(func);
+    
+
+    console.log("Computer:" + com + " Player:" + func);
+    console.log("Winner: " + winner);
 
     return final;
 }
