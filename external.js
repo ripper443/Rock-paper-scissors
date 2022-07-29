@@ -88,11 +88,11 @@ function rps(com,func) {
     else if (com == "Scissor" && func == "Paper"){
         winner = "Computer Wins";
     } else if (com == "Paper" && func == "Scissor"){
-        winner = "Computer Wins";
-    } else if (com == "Paper" && func == "Rock"){
         winner = "Player Wins";
+    } else if (com == "Paper" && func == "Rock"){
+        winner = "Computer Wins";
     } else if (com == "Rock" && func == "Paper"){
-        winner= "Computer Wins";
+        winner= "Player Wins";
     } else if (com == "Rock" && func == "Scissor"){
         winner = "Computer Wins";
     } else if (com == "Scissor" && func == "Rock"){
@@ -117,9 +117,7 @@ function rps(com,func) {
     return final;
 }
 
-
 /// `You ${winOrLose}! ${comp} beats ${playerSelection()}`
 
 /// if winner=player = 
 /// if winner = comp=
-
