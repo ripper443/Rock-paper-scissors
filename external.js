@@ -1,22 +1,4 @@
 
-//PLAN YOUR SOLUTION
-
-
-//function declaration
-
-//RANDOMLY return rock,paper or scissor
-    
-//Math.floor(Math.random() * 3) ;  // returns 0 , 1, 2
-
-//if result is 0, return rock
-//if result is 1,  return paper
-//if result is 2, return scissor
-
-//use console
-
-let input = prompt("Enter rock, paper or scissor");
-
-
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3) ;
     let result;
@@ -37,27 +19,22 @@ function getComputerChoice() {
 }
 
 
-//SECOND PART
+let com = getComputerChoice();
+let playerChoice;
 
-// create a function that takes 2 parameters, computerSelection
-// , playerSelection
-
-let comp = getComputerChoice();
-
-
-//playerSelection must be able to input case insensitive
-function playerSelection() {
+/** 
+function playerSelection(player) {
     let ans;
     const pattern= /paper/i  ;
     const pattern2 = /rock/i;
     const pattern3 = /scissor/i;
     
     
-     if (pattern.test(input) == true){
+     if ( pattern.test(player) == true){
         ans = "Paper";
-     } else if (pattern2.test(input) == true) {
+     } else if (pattern2.test(player) == true) {
         ans = "Rock";
-     } else if (pattern3.test(input) == true){
+     } else if (pattern3.test(player) == true){
         ans = "Scissor";
      } else {
         ans = "Please use only rock, paper or scissor";
@@ -65,16 +42,7 @@ function playerSelection() {
         return ans;
     }
     
-//conditions
-// scissors beats paper, paper beats rock, rock beats scissor
-//returns a string that declares winner
-
-//ideas : 
-// use numbers to decide who will win ; 0>1== true, return player
-// need to convert playerChoice to numbers to use it
-
-// what if we create an array of inputs and call it from there?
-
+**/
 
 
 
@@ -112,26 +80,16 @@ function playRound(com,func) {
 
     
 
-    //console.log("Computer:" + com + " Player:" + func);
-    //console.log("Winner: " + winner);
-
+ 
     return final;
 }
 
-/// `You ${winOrLose}! ${comp} beats ${playerSelection()}`
-
-/// if winner=player = 
-/// if winner = comp=
-
-//GAME FUNCTION
-/** keep count of rounds */
-/* inital value is 5, decrement until 1*/
 
 const Win = /win/i;
 const Lose = /lose/i;
        
 function truth(){
-let both = playRound(getComputerChoice(),playerSelection());
+let both = playRound(getComputerChoice(),playerChoice);
 console.log(both);
 
 let ans = "";
@@ -155,13 +113,13 @@ function game(){
 
     let end;
 
-    for (let i = 1; i < 6; i++){
-   temp = playRound(getComputerChoice(),playerSelection())
+   
+   temp = playRound(getComputerChoice(),playerChoice)
    if (Win.test(temp) == true){
     player+=1;
    } else if (Lose.test(temp) == true){
     computer+=1;
-   }
+   
 
 
     console.log(temp);
@@ -169,14 +127,141 @@ function game(){
     console.log(computer);
 }
     if (player > computer) {
-        end = `Player Wins! ${player} vs ${computer}`
+        end = `Player:${player} Computer: ${computer}`
     }else if ( computer > player){
-        end = `Computer Wins! ${computer} vs ${player}`
+        end = `Player:${player} Computer: ${computer}`
+    } else {
+        end = `Player:${player} Computer: ${computer}`
     }
 return end;
+} 
+
+let playerScore = +"";
+let computerScore = +"";
+let click = +"";
+let result = "";
+
+
+const rocky = document.getElementsByTagName('button')[0];
+const papery = document.getElementsByTagName('button')[1];
+const scissory = document.getElementsByTagName('button')[2];
+
+rocky.addEventListener('click' , rock); 
+papery.addEventListener('click' , paper); 
+scissory.addEventListener('click' , sci); 
+
+function rock () {
+    playerChoice = "Rock";
+    let newDiv = document.createElement('div');
+    newDiv.innerText = game();
+    document.body.appendChild(newDiv);
+    com = getComputerChoice();
+    click += 1;
+    if (click == 6) {
+        if (computerScore > playerScore) {
+            result = "Computer Wins!"
+            } else {
+            result = "Player Wins!"
+            }
+            newDiv.innerText = result;
+        let newDiv2 = document.createElement('div');
+        newDiv2.innerText = `Player Score : ${playerScore} Computer Score : ${computerScore}`;
+        document.body.appendChild(newDiv2);
+        rocky.removeEventListener('click' , rock);
+        papery.removeEventListener('click' , paper);
+        scissory.removeEventListener('click' , sci);
+    }
+    
+    if (newDiv.innerText.includes("Player:1") ){
+        playerScore += 1;
+    } else if (newDiv.innerText.includes("Computer: 1")) {
+        computerScore += 1;
+    }
+    console.log('player score: ' +playerScore);
+    console.log('computer score: ' + computerScore);
+    console.log(click);
+}
+
+function paper () {
+    playerChoice = "Paper";
+    let newDiv = document.createElement('div');
+    newDiv.innerText = game();
+    document.body.appendChild(newDiv);
+    com = getComputerChoice();
+    click += 1;
+    if (click == 6) {
+        if (computerScore > playerScore) {
+            result = "Computer Wins!"
+            } else {
+            result = "Player Wins!"
+            }
+            newDiv.innerText = result;
+            let newDiv2 = document.createElement('div');
+        newDiv2.innerText = `Player Score : ${playerScore} Computer Score : ${computerScore}`;
+        document.body.appendChild(newDiv2);
+            
+        
+        rocky.removeEventListener('click' , rock);
+        papery.removeEventListener('click' , paper);
+        scissory.removeEventListener('click' , sci);
+    }
+    
+    if (newDiv.innerText.includes("Player:1") ){
+        playerScore += 1;
+    } else if (newDiv.innerText.includes("Computer: 1")) {
+        computerScore += 1;
+    }
+    console.log('player score: ' +playerScore);
+    console.log('computer score: ' + computerScore);
+    console.log(click);
+}
+
+function sci () {
+    playerChoice = "Scissor";
+    let newDiv = document.createElement('div');
+    newDiv.innerText = game();
+    document.body.appendChild(newDiv);
+    com = getComputerChoice();
+    click += 1;
+    if (click == 6) {
+        if (computerScore > playerScore) {
+            result = "Computer Wins!"
+            } else {
+            result = "Player Wins!"
+            }
+            newDiv.innerText = result;
+            let newDiv2 = document.createElement('div');
+        newDiv2.innerText = `Player Score : ${playerScore} Computer Score : ${computerScore}`;
+        document.body.appendChild(newDiv2);
+        
+        rocky.removeEventListener('click' , rock);
+        papery.removeEventListener('click' , paper);
+        scissory.removeEventListener('click' , sci);
+    }
+    
+    if (newDiv.innerText.includes("Player:1") ){
+        playerScore += 1;
+    } else if (newDiv.innerText.includes("Computer: 1")) {
+        computerScore += 1;
+    }
+    console.log('player score: ' +playerScore);
+    console.log('computer score: ' + computerScore);
+    console.log(click);
 }
 
 
 
-/*when it reaches 5 rounds, declare winner*/
-/*calls playRound function*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
